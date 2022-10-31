@@ -3,7 +3,7 @@ name: Release And Deploy to Railway
 on:
   push:
     branches: 
-      - '/^v[0-9]+\.[0-9]+$/gmi'
+      - 'v[0-9]+\.[0-9]+'
 
 jobs:
   Build:
