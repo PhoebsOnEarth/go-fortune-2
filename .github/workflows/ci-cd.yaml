@@ -14,12 +14,12 @@ jobs:
     steps:
       - name: Checkout code 🀄
         uses: actions/checkout@v3
-      - name: Create Release 🌼
+      - name: Create a Release 🌼
         uses: elgohr/Github-Release-Action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          title: MyReleaseMessage
+          title: ${{ github.ref_name }}
 
   deploy:
     runs-on: ubuntu-latest
