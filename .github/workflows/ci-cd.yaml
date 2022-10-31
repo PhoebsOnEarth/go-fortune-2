@@ -23,9 +23,10 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref_name }}
           body: |
-            Changes in this Release
-              - First Change
-              - Second Change
+            🖥️ Changes in this Release: 🎗️
+              - First Change:  xxxxxxxxxxxxxxxxxxxxxxxxxxx
+              - Second Change: xxxxxxxxxxxxxxx
+                xxxxxxxxxx
           draft: false
           prerelease: false
 
