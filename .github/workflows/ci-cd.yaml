@@ -1,35 +1,14 @@
-name: Release And Deploy to Railway
+name: Deploy to Railway And Release 
 
 on:
   push:
     branches: 
-      - 'v[0-9]+\.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  Build:
-    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
-    name: Create Release
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code 🀄
-        uses: actions/checkout@v2
-      - name: Create Release 🌼
-        id: create_release 
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref_name }}
-          body: |
-            Changes in this Release
-              - First Change
-              - Second Change
-          draft: false
-          prerelease: false
-
   deploy:
+    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
+    name: Deploy to Railway
     runs-on: ubuntu-latest
 
     steps:
@@ -43,5 +22,22 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+  Build:
+    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 🀄
+        uses: actions/checkout@v3
+      - name: Create a Release 🌼
+        uses: elgohr/Github-Release-Action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          title: ${{ github.ref_name }}
+
+  
 
   
