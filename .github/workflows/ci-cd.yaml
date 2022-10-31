@@ -3,10 +3,12 @@ name: Deploy to Railway And Release
 on:
   push:
     branches: 
-      - 'v[0-9]+\.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   deploy:
+    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
+    name: Deploy to Railway
     runs-on: ubuntu-latest
 
     steps:
