@@ -8,6 +8,7 @@
 
 ## Versions and Container Images
 The release version corresponds to the container image version
+[![Deploy to Railway And Release](https://github.com/PhoebsOnEarth/go-fortune-2/actions/workflows/ci-cd.yaml/badge.svg)](https://github.com/PhoebsOnEarth/go-fortune-2/actions/workflows/ci-cd.yaml)
 
 ## Public key
 
