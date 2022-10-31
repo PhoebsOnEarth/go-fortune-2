@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code 🍄
+      - name: Checkout code 0️⃣
         uses: actions/checkout@v2
       - name: Create Release 🌼
         id: create_release 
