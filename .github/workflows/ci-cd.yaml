@@ -1,11 +1,13 @@
-name: Deploy to Railway And Release 
+name: Release And Deploy to Railway
 
 on:
   push:
-    branches: [main]
+    branches: 
+      - '/^v[0-9]+\.[0-9]+$/gmi'
 
 jobs:
   Build:
+    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
     name: Create Release
     runs-on: ubuntu-latest
 
@@ -18,8 +20,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.head_ref }}
+          release_name: Release ${{ github.head_ref }}
           body: |
             Changes in this Release
               - First Change
