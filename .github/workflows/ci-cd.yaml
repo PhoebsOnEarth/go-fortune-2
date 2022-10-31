@@ -1,4 +1,4 @@
-name: Release And Deploy to Railway
+name: Deploy to Railway And Release 
 
 on:
   push:
@@ -6,6 +6,21 @@ on:
       - 'v[0-9]+\.[0-9]+'
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 🛰️
+        uses: actions/checkout@v3
+
+      - name: Install Railway 🥳
+        run: npm i -g @railway/cli
+
+      - name: Deploy 😆
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
   Build:
     if: "!contains(github.event.head_commit.message, '#NOTRUN')"
     name: Create Release
@@ -21,19 +36,6 @@ jobs:
         with:
           title: ${{ github.ref_name }}
 
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code 🛰️
-        uses: actions/checkout@v3
-
-      - name: Install Railway 🥳
-        run: npm i -g @railway/cli
-
-      - name: Deploy 😆
-        run: railway up
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+  
 
   
