@@ -1,4 +1,4 @@
-name: Deploy to Railway And Release 
+name: Deploy to Railway And Send 
 
 on:
   push:
