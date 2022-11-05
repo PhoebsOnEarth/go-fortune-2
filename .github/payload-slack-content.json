@@ -1,0 +1,54 @@
+{
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA55 CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nWANG QIUHE"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Metriculation:*\nA0265078W"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\n1045753@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Reposity:*\nhttps://github.com/PhoebsOnEarth/go-fortune-2.git"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:*\n<https://golangca-production.up.railway.app/>"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "<https://golangca-production.up.railway.app/| Open Application>"
+                    }
+                  }
+                ]
+}
