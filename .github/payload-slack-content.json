@@ -30,7 +30,7 @@
                       },
                       {
                         "type": "mrkdwn",
-                        "text": "*Repository:*\nhttps://github.com/PhoebsOnEarth/go-fortune-2.git"
+                        "text": "*Repository:*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                       }
                     ]
                   },
