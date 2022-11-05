@@ -30,7 +30,7 @@
                       },
                       {
                         "type": "mrkdwn",
-                        "text": "*Repository:*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                        "text": "*Repository:*\n<https://github.com/PhoebsOnEarth/go-fortune-2>"
                       }
                     ]
                   },
@@ -39,7 +39,7 @@
                     "fields": [
                       {
                         "type": "mrkdwn",
-                        "text": "*Deployment:*\n<https://golangca-production.up.railway.app/>"
+                        "text": "*Deployment:*\n<https://github.com/PhoebsOnEarth/go-fortune-2>"
                       }
                     ]
                   },
