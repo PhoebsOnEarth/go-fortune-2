@@ -23,26 +23,78 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-      - name: Send custom JSON data to Slack workflow
+      - name: Send custom JSON data to Slack workflow 
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          # This data can be any valid JSON from a previous step in the GitHub Action
+          # For posting a rich message using Block Kit
           payload: |
             {
-              "key": "value",
-              "foo": "bar"
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA55 CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nWANG QIUHE"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Metriculation:*\nA0265078W"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\n1045753@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Reposity:*\nhttps://github.com/PhoebsOnEarth/go-fortune-2.git"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:*\n<https://golangca-production.up.railway.app/>"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "<https://golangca-production.up.railway.app/| Open Application>"
+                    }
+                  }
+                ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
 
+          
   Build:
     if: "!contains(github.event.head_commit.message, '#NOTRUN')"
     name: Create Release 🌞
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code 🀄
+      - name: Checkout code 
         uses: actions/checkout@v3
       - name: Create a Release 🌼
         uses: elgohr/Github-Release-Action@v4
