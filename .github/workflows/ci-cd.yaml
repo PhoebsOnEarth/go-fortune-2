@@ -23,9 +23,9 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
-      - name: Send custom JSON data to Slack workflow
-        id: slack
+      - name: slack-send
         uses: slackapi/slack-github-action@v1.23.0
+        id: slack
         with:
           # This data can be any valid JSON from a previous step in the GitHub Action
           payload: |
