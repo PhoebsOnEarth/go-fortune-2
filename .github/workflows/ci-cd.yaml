@@ -23,17 +23,24 @@ jobs:
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
+  Send:
+    if: "!contains(github.event.head_commit.message, '#NOTRUN')"
+    name: Send Slack🌞
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 🛰️
+        uses: actions/checkout@v3
+
       - name: Send custom JSON data to Slack workflow 
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          # For posting a rich message using Block Kit
-          payload-file-path: "./.github/payload-slack-content.json"            
+            payload-file-path: "./.github/payload-slack-content.json"            
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-
-          
+   
   Build:
     if: "!contains(github.event.head_commit.message, '#NOTRUN')"
     name: Create Release 🌞
@@ -42,6 +49,7 @@ jobs:
     steps:
       - name: Checkout code 
         uses: actions/checkout@v3
+        
       - name: Create a Release 🌼
         uses: elgohr/Github-Release-Action@v4
         env:
