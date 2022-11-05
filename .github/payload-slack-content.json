@@ -26,11 +26,11 @@
                     "fields": [
                       {
                         "type": "mrkdwn",
-                        "text": "*Email:*\n1045753@u.nus.edu"
+                        "text": "*Email:*\ne1045753@u.nus.edu"
                       },
                       {
                         "type": "mrkdwn",
-                        "text": "*Reposity:*\nhttps://github.com/PhoebsOnEarth/go-fortune-2.git"
+                        "text": "*Repository:*\nhttps://github.com/PhoebsOnEarth/go-fortune-2.git"
                       }
                     ]
                   },
