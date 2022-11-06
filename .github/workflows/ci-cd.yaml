@@ -36,7 +36,61 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
-            payload-file-path: "./.github/payload-slack-content.json"            
+            payload: |
+              {
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "DipSA55 CI/CD Assignment Submission",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Name:*\nWANG QIUHE"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Metriculation:*\nA0265078W"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Email:*\ne1045753@u.nus.edu"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Repository:*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Deployment:*\n${{ secrets.RAILWAY_URL }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "${{ secrets.RAILWAY_URL }} | Open Application"
+                    }
+                  }
+                ]
+              }         
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
