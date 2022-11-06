@@ -69,7 +69,7 @@ jobs:
                       },
                       {
                         "type": "mrkdwn",
-                        "text": "*Repository:*\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                        "text": "*Repository:*\n${{ github.repositoryUrl }}"
                       }
                     ]
                   },
@@ -86,7 +86,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "${{ secrets.RAILWAY_URL }} | Open Application"
+                      "text": "<${{ secrets.RAILWAY_URL }} | Open Application>"
                     }
                   }
                 ]
